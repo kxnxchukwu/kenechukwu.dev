@@ -40,11 +40,6 @@ export default function Home() {
         .
       </p>
 
-      <p className="leading-[25px] pb-4 text-neutral-500 w-11/12">
-        I'm currently open to new opportunities — frontend or full-stack roles
-        where craft and attention to detail matter.
-      </p>
-
       <div className="mt-4">
         <p className="leading-[25px] pb-4 text-neutral-500 w-11/12">
           Take a look at my{' '}
@@ -85,7 +80,8 @@ export default function Home() {
         </p>
 
         <p className="leading-[25px] pb-4 text-neutral-500 w-11/12">
-          Feel free to{' '}
+          Outside of work I'm open to freelance projects and contributing to
+          open source — feel free to{' '}
           <span
             onClick={handleGetInTouchClick}
             className="underline cursor-pointer"
