@@ -20,6 +20,9 @@ export default defineConfig({
           router: ['react-router-dom'],
           mui: ['@mui/icons-material', '@mui/joy']
         }
+      },
+      treeshake: {
+        moduleSideEffects: false
       }
     }
   }
