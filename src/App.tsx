@@ -5,6 +5,7 @@ import { Experience } from './components/Experience';
 import { BackToHome } from './components/BackToHome';
 import { Projects } from './components/Projects';
 import { About } from './components/About';
+import { NotFound } from './components/NotFound';
 
 function App() {
   const { pathname } = useLocation();
@@ -16,6 +17,7 @@ function App() {
         <Route path="/work" element={<Experience />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   );
