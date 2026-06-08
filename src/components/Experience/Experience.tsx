@@ -1,7 +1,9 @@
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import ExperienceItem from './ExperienceItem';
 import { experienceData } from './data';
 
 export default function Experience() {
+  useDocumentTitle('Work — Kenechukwu Ajufo');
   return (
     <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px] lg:mt-[180px]">
       <h1 className="text-neutral-700 font-semibold pb-6">work</h1>

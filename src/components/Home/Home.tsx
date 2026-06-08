@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { IconSet } from '../IconSet';
 import DownloadIcon from '@mui/icons-material/Download';
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export default function Home() {
+  useDocumentTitle('Kenechukwu Ajufo — Frontend Engineer');
   const [showSocials, setShowSocials] = useState(false);
 
   const handleGetInTouchClick = () => {

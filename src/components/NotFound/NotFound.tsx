@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export default function NotFound() {
+  useDocumentTitle('404 Not Found');
   return (
     <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px] lg:mt-[180px]">
       <h1 className="text-neutral-700 font-semibold pb-6">404</h1>

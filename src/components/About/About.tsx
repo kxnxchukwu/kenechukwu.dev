@@ -1,6 +1,8 @@
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { IconSet } from '../IconSet';
 
 export default function About() {
+  useDocumentTitle('About — Kenechukwu Ajufo');
   return (
     <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px] lg:mt-[180px]">
       <h1 className="text-neutral-700 font-semibold pb-6">about</h1>
