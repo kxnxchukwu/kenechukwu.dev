@@ -45,4 +45,9 @@ describe('Projects', () => {
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
   });
+
+  it('sets the document title', () => {
+    render(<Projects />);
+    expect(document.title).toBe('Projects — Kenechukwu Ajufo');
+  });
 });

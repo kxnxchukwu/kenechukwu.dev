@@ -73,4 +73,9 @@ describe('Home', () => {
     const cvLink = screen.getByRole('link', { name: /kenechukwu's cv/i });
     expect(cvLink).toHaveAttribute('href', expect.stringMatching(/\.pdf$/));
   });
+
+  it('sets the document title', () => {
+    renderHome();
+    expect(document.title).toBe('Kenechukwu Ajufo — Frontend Engineer');
+  });
 });

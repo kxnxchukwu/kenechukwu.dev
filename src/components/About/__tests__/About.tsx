@@ -29,4 +29,9 @@ describe('About', () => {
       expect.stringContaining('music.apple.com')
     );
   });
+
+  it('sets the document title', () => {
+    render(<About />);
+    expect(document.title).toBe('About — Kenechukwu Ajufo');
+  });
 });

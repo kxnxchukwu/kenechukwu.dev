@@ -34,4 +34,9 @@ describe('Experience', () => {
       });
     });
   });
+
+  it('sets the document title', () => {
+    render(<Experience />);
+    expect(document.title).toBe('Work — Kenechukwu Ajufo');
+  });
 });

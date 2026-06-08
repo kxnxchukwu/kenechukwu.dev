@@ -21,4 +21,13 @@ describe('NotFound', () => {
     const link = screen.getByRole('link', { name: /back to home/i });
     expect(link).toHaveAttribute('href', '/');
   });
+
+  it('sets the document title', () => {
+    render(
+      <MemoryRouter>
+        <NotFound />
+      </MemoryRouter>
+    );
+    expect(document.title).toBe('404 Not Found');
+  });
 });
