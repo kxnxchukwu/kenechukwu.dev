@@ -27,3 +27,5 @@ yarn dev
 ## Deployment
 
 Deployed on Vercel at [kenechukwu.dev](https://kenechukwu.dev)
+
+![CI](https://github.com/kxnxchukwu/kenechukwu.dev/actions/workflows/test.yml/badge.svg)
