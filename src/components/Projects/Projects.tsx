@@ -15,7 +15,7 @@ const projects: Project[] = [
       'Jest'
     ],
     github: 'https://github.com/kxnxchukwu/tinyhouse',
-    live: 'https://tinyhouseapplication.herokuapp.com/'
+    live: 'https://tinyhouse.kenechukwu.dev/'
   },
   {
     name: 'Crown Clothing',
@@ -23,7 +23,7 @@ const projects: Project[] = [
       'E-commerce PWA with Stripe checkout, Firebase backend and serverless functions.',
     technologies: ['React', 'TypeScript', 'Redux Toolkit', 'Styled Components'],
     github: 'https://github.com/kxnxchukwu/crwn-clothing',
-    live: 'https://crwnclothing-ts.netlify.app/'
+    live: 'https://shop.kenechukwu.dev/'
   },
   {
     name: 'Linear Clone',
