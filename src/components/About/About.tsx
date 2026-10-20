@@ -25,7 +25,7 @@ export default function About() {
       <p className="leading-[25px] pb-4 text-neutral-500 font-[380] w-11/12">
         When I'm not building things I'm usually listening to the{' '}
         <a
-          aria-label="Frontend Happy Hour Podcast Website"
+          aria-label="Front End Happy Hour podcast website"
           href="https://frontendhappyhour.com/"
           target="_blank"
           rel="noopener noreferrer"

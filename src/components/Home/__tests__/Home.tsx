@@ -81,7 +81,7 @@ describe('Home', () => {
 
   it('has a CV download link', () => {
     renderHome();
-    const cvLink = screen.getByRole('link', { name: /kenechukwu's cv/i });
+    const cvLink = screen.getByRole('link', { name: /download cv/i });
     expect(cvLink).toHaveAttribute('href', expect.stringMatching(/\.pdf$/));
   });
 

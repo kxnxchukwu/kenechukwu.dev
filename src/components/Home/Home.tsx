@@ -95,7 +95,6 @@ export default function Home() {
           .
         </p>
         <a
-          aria-label="kenechukwu's CV"
           href="/kenechukwu-ajufo-cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
