@@ -26,8 +26,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          mui: ['@mui/icons-material', '@mui/joy']
+          router: ['react-router-dom']
         }
       },
       treeshake: {

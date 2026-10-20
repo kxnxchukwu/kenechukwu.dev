@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBackIcon } from '../Icons';
 
 export default function BackToHome() {
   return (
@@ -9,7 +9,7 @@ export default function BackToHome() {
         className="hover:text-green-700 flex items-center justify-between"
         aria-label="Back to Home"
       >
-        <ArrowBack fontSize="small" /> {'  '} back to home
+        <ArrowBackIcon size={20} /> {'  '} back to home
       </Link>
     </div>
   );

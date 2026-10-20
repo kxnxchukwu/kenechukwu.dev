@@ -1,5 +1,4 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { GitHubIcon, OpenInNewIcon } from '../Icons';
 
 export interface Project {
   name: string;
@@ -26,7 +25,7 @@ export default function ProjectCard({
               className="text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} GitHub`}
             >
-              <GitHubIcon style={{ fontSize: 15 }} />
+              <GitHubIcon size={15} />
             </a>
           )}
           {project.live && (
@@ -37,7 +36,7 @@ export default function ProjectCard({
               className="text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} live site`}
             >
-              <OpenInNewIcon style={{ fontSize: 15 }} />
+              <OpenInNewIcon size={15} />
             </a>
           )}
         </div>

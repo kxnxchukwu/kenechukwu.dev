@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { IconSet } from '../IconSet';
-import DownloadIcon from '@mui/icons-material/Download';
+import { DownloadIcon } from '../Icons';
 import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
@@ -101,7 +101,7 @@ export default function Home() {
           className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-700 transition-colors"
         >
           <span>download cv</span>
-          <DownloadIcon style={{ fontSize: 14 }} />
+          <DownloadIcon size={14} />
         </a>
 
         {showSocials && <IconSet />}
