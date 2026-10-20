@@ -1,8 +1,10 @@
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
-import XIcon from '@mui/icons-material/X';
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MarkEmailUnreadIcon,
+  XIcon
+} from '../Icons';
 
 export default function IconSet() {
   return (

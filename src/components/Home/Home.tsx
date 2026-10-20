@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { IconSet } from '../IconSet';
-import DownloadIcon from '@mui/icons-material/Download';
+import { DownloadIcon } from '../Icons';
 import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
@@ -13,7 +13,7 @@ export default function Home() {
   };
 
   return (
-    <div className="md:max-w-[420px] m-6 md:m-20 text-neutral-500 font-[380] mt-[50px] lg:mt-[180px]">
+    <div className="md:max-w-[420px] m-6 md:m-20 text-neutral-500 font-[380] mt-[50px]">
       <h1 className="text-neutral-700 font-semibold pb-6">kenechukwu ajufo</h1>
 
       <p className="leading-[25px] pb-4 text-neutral-500">
@@ -26,7 +26,7 @@ export default function Home() {
         <a
           aria-label="Poppulo"
           href="https://poppulo.com/"
-          className="text-neutral-900 border-b hover:text-neutral-400"
+          className="text-neutral-900 border-b hover:text-neutral-500"
         >
           Poppulo
         </a>
@@ -35,7 +35,7 @@ export default function Home() {
         <a
           aria-label="bxp software"
           href="https://www.bxpsoftware.com/"
-          className="text-neutral-900 border-b hover:text-neutral-400"
+          className="text-neutral-900 border-b hover:text-neutral-500"
         >
           bxp software
         </a>
@@ -48,7 +48,7 @@ export default function Home() {
           <Link
             aria-label="work experience"
             to="/work"
-            className="text-green-800 underline"
+            className="text-green-800 underline hover:text-green-700"
           >
             work experience
           </Link>
@@ -56,7 +56,7 @@ export default function Home() {
           <Link
             aria-label="my personal projects"
             to="/projects"
-            className="text-indigo-600 underline"
+            className="text-green-800 underline hover:text-green-700"
           >
             projects
           </Link>
@@ -64,7 +64,7 @@ export default function Home() {
           <Link
             aria-label="about me"
             to="/about"
-            className="text-neutral-900 underline"
+            className="text-green-800 underline hover:text-green-700"
           >
             about me
           </Link>
@@ -74,7 +74,7 @@ export default function Home() {
             href="https://ematchi-game-six.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-900 underline hover:text-neutral-400"
+            className="text-neutral-900 underline hover:text-neutral-500"
           >
             eMatchi
           </a>
@@ -84,23 +84,24 @@ export default function Home() {
         <p className="leading-[25px] pb-4 text-neutral-500 w-11/12">
           Outside of work I'm open to freelance projects and contributing to
           open source — feel free to{' '}
-          <span
+          <button
+            type="button"
             onClick={handleGetInTouchClick}
-            className="underline cursor-pointer"
+            aria-expanded={showSocials}
+            className="underline cursor-pointer hover:text-neutral-900"
           >
             get in touch
-          </span>
+          </button>
           .
         </p>
         <a
-          aria-label="kenechukwu's CV"
           href="/kenechukwu-ajufo-cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-sm text-neutral-400 hover:text-neutral-700 transition-colors"
+          className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-700 transition-colors"
         >
           <span>download cv</span>
-          <DownloadIcon style={{ fontSize: 14 }} />
+          <DownloadIcon size={14} />
         </a>
 
         {showSocials && <IconSet />}

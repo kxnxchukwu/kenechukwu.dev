@@ -4,7 +4,7 @@ import { IconSet } from '../IconSet';
 export default function About() {
   useDocumentTitle('About — Kenechukwu Ajufo');
   return (
-    <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px] lg:mt-[180px]">
+    <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px]">
       <h1 className="text-neutral-700 font-semibold pb-6">about</h1>
 
       <p className="leading-[25px] pb-4 text-neutral-500 font-[380] w-11/12">
@@ -25,11 +25,11 @@ export default function About() {
       <p className="leading-[25px] pb-4 text-neutral-500 font-[380] w-11/12">
         When I'm not building things I'm usually listening to the{' '}
         <a
-          aria-label="Frontend Happy Hour Podcast Website"
+          aria-label="Front End Happy Hour podcast website"
           href="https://frontendhappyhour.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-900 border-b hover:text-neutral-400"
+          className="text-neutral-900 border-b hover:text-neutral-500"
         >
           Front End Happy Hour
         </a>{' '}
@@ -39,7 +39,7 @@ export default function About() {
           href="https://music.apple.com/ng/playlist/heavy-rotation/pl.pm-d5779e520ff52d7f662733f8b6827a26"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-900 border-b hover:text-neutral-400"
+          className="text-neutral-900 border-b hover:text-neutral-500"
         >
           Apple Music
         </a>
@@ -48,7 +48,7 @@ export default function About() {
       </p>
 
       <div className="pt-2">
-        <p className="text-xs text-neutral-400 tracking-widest pb-4">find me</p>
+        <p className="text-xs text-neutral-500 tracking-widest pb-4">find me</p>
         <IconSet />
       </div>
     </div>

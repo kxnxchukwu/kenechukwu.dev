@@ -15,9 +15,9 @@ export default function ExperienceItem({
 }: Readonly<ExperienceItemProps>) {
   return (
     <div className="mb-4">
-      <p className="text-xs text-neutral-400 pb-1">{yearRange}</p>
+      <p className="text-xs text-neutral-500 pb-1">{yearRange}</p>
       <h2 className="text-neutral-700 font-semibold">
-        {role} <span className="text-neutral-400 font-[380]">at {company}</span>
+        {role} <span className="text-neutral-500 font-[380]">at {company}</span>
       </h2>
       <p className="leading-[25px] pt-2 pb-3 text-neutral-500 font-[380] w-11/12">
         {description}
@@ -29,8 +29,8 @@ export default function ExperienceItem({
             key={tech}
             style={{
               fontSize: '11px',
-              color: '#737373',
-              background: '#e5e5e5',
+              color: 'var(--chip-fg)',
+              background: 'var(--chip-bg)',
               borderRadius: '999px',
               padding: '3px 10px',
               whiteSpace: 'nowrap',

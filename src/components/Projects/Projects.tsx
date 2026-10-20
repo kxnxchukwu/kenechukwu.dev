@@ -60,7 +60,7 @@ const projects: Project[] = [
 export default function Projects() {
   useDocumentTitle('Projects — Kenechukwu Ajufo');
   return (
-    <div className="md:max-w-[520px] m-6 md:m-20 mt-[50px] lg:mt-[180px]">
+    <div className="md:max-w-[520px] m-6 md:m-20 mt-[50px]">
       <h1 className="text-neutral-700 font-semibold pb-6">projects</h1>
       {projects.map((project) => (
         <ProjectCard key={project.name} project={project} />

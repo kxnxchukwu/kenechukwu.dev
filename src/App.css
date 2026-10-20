@@ -1,28 +1,70 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html,
-body {
-  height: 100%;
-}
+@import 'tailwindcss';
 
 :root {
-  font-family: 'Inter', sans-serif;
+  color-scheme: light;
+  --page-bg: #ffffff;
+  --link: #000000;
+  --selection-bg: #bbf7d0; /* green-200 */
+  --chip-bg: #e5e5e5;
+  --chip-fg: #636363; /* 4.77:1 on chip-bg */
+  --focus-ring: oklch(52.7% 0.154 150.069); /* green-700 */
 }
 
-#root {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+/*
+ * Dark theme: overrides Tailwind's color variables so existing utility classes flip.
+ * data-theme is set before first paint by the script in index.html (stored choice,
+ * else the system setting) and updated by ThemeToggle.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page-bg: oklch(14.5% 0 0); /* neutral-950 */
+  --link: oklch(98.5% 0 0);
+  --selection-bg: #14532d; /* green-900 */
+  --chip-bg: #262626;
+  --chip-fg: #a1a1a1;
+  --focus-ring: oklch(72.3% 0.219 149.579); /* green-500 */
+
+  --color-neutral-500: oklch(70.8% 0 0);
+  --color-neutral-600: oklch(87% 0 0);
+  --color-neutral-700: oklch(92.2% 0 0);
+  --color-neutral-900: oklch(97% 0 0);
+  --color-green-700: oklch(72.3% 0.219 149.579); /* green-500 */
+  --color-green-800: oklch(79.2% 0.209 151.711); /* green-400 */
 }
 
-::selection {
-  background-color: #bbf7d0; /* green-200 */
-  color: black;
-}
+/* Base element styles sit in Tailwind's base layer so utility classes override them */
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
 
-a {
-  color: #000;
-  text-decoration: none;
+  :root {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    background: var(--page-bg);
+  }
+
+  #root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--link);
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
 }

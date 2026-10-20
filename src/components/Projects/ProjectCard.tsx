@@ -1,5 +1,4 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { GitHubIcon, OpenInNewIcon } from '../Icons';
 
 export interface Project {
   name: string;
@@ -15,18 +14,19 @@ export default function ProjectCard({
 }: Readonly<{ project: Project }>) {
   return (
     <div className="mb-10">
-      <div className="flex items-center gap-3 pb-1">
+      <div className="flex items-center gap-2 pb-1">
         <h2 className="text-neutral-700 font-semibold">{project.name}</h2>
-        <div className="flex items-center gap-2">
+        {/* 24px links around 15px icons meet the WCAG 2.2 target-size minimum */}
+        <div className="flex items-center">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-300 hover:text-neutral-600 transition-colors"
+              className="inline-flex size-6 items-center justify-center text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} GitHub`}
             >
-              <GitHubIcon style={{ fontSize: 15 }} />
+              <GitHubIcon size={15} />
             </a>
           )}
           {project.live && (
@@ -34,10 +34,10 @@ export default function ProjectCard({
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-300 hover:text-neutral-600 transition-colors"
+              className="inline-flex size-6 items-center justify-center text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} live site`}
             >
-              <OpenInNewIcon style={{ fontSize: 15 }} />
+              <OpenInNewIcon size={15} />
             </a>
           )}
         </div>
@@ -51,8 +51,8 @@ export default function ProjectCard({
             key={tech}
             style={{
               fontSize: '11px',
-              color: '#737373',
-              background: '#e5e5e5',
+              color: 'var(--chip-fg)',
+              background: 'var(--chip-bg)',
               borderRadius: '999px',
               padding: '3px 10px',
               whiteSpace: 'nowrap',

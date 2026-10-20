@@ -68,9 +68,20 @@ describe('Home', () => {
     ).not.toBeInTheDocument();
   });
 
+  it('makes "get in touch" a keyboard-operable button', async () => {
+    const user = userEvent.setup();
+    renderHome();
+    const trigger = screen.getByRole('button', { name: /get in touch/i });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    trigger.focus();
+    await user.keyboard('{Enter}');
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('link', { name: /github/i })).toBeInTheDocument();
+  });
+
   it('has a CV download link', () => {
     renderHome();
-    const cvLink = screen.getByRole('link', { name: /kenechukwu's cv/i });
+    const cvLink = screen.getByRole('link', { name: /download cv/i });
     expect(cvLink).toHaveAttribute('href', expect.stringMatching(/\.pdf$/));
   });
 
