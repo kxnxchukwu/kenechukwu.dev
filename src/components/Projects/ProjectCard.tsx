@@ -14,15 +14,16 @@ export default function ProjectCard({
 }: Readonly<{ project: Project }>) {
   return (
     <div className="mb-10">
-      <div className="flex items-center gap-3 pb-1">
+      <div className="flex items-center gap-2 pb-1">
         <h2 className="text-neutral-700 font-semibold">{project.name}</h2>
-        <div className="flex items-center gap-2">
+        {/* 24px links around 15px icons meet the WCAG 2.2 target-size minimum */}
+        <div className="flex items-center">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-neutral-700 transition-colors"
+              className="inline-flex size-6 items-center justify-center text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} GitHub`}
             >
               <GitHubIcon size={15} />
@@ -33,7 +34,7 @@ export default function ProjectCard({
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-neutral-700 transition-colors"
+              className="inline-flex size-6 items-center justify-center text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} live site`}
             >
               <OpenInNewIcon size={15} />
