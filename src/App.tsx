@@ -6,11 +6,13 @@ import { BackToHome } from './components/BackToHome';
 import { Projects } from './components/Projects';
 import { About } from './components/About';
 import { NotFound } from './components/NotFound';
+import { ThemeToggle } from './components/ThemeToggle';
 
 function App() {
   const { pathname } = useLocation();
   return (
-    <main className="min-h-screen pl-[5%] md:pl-[30%] lg:pl-[35%] pt-[6%] md:pt-[15%] lg:pt-[25%] pb-20">
+    <main className="min-h-screen pl-[5%] md:pl-[30%] lg:pl-[35%] pt-[6%] md:pt-[calc(33vh_-_80px)] pb-20">
+      <ThemeToggle />
       {pathname !== '/' && <BackToHome />}
       <Routes>
         <Route path="/" element={<Home />} />

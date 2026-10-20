@@ -23,7 +23,7 @@ export default function ProjectCard({
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-300 hover:text-neutral-600 transition-colors"
+              className="text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} GitHub`}
             >
               <GitHubIcon style={{ fontSize: 15 }} />
@@ -34,7 +34,7 @@ export default function ProjectCard({
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-300 hover:text-neutral-600 transition-colors"
+              className="text-neutral-500 hover:text-neutral-700 transition-colors"
               aria-label={`${project.name} live site`}
             >
               <OpenInNewIcon style={{ fontSize: 15 }} />
@@ -51,8 +51,8 @@ export default function ProjectCard({
             key={tech}
             style={{
               fontSize: '11px',
-              color: '#737373',
-              background: '#e5e5e5',
+              color: 'var(--chip-fg)',
+              background: 'var(--chip-bg)',
               borderRadius: '999px',
               padding: '3px 10px',
               whiteSpace: 'nowrap',
