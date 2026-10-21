@@ -3,9 +3,11 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
+  HOME_CARD,
   loadFonts,
   OG_HEIGHT,
   OG_WIDTH,
+  postCard,
   postHtml,
   readPosts,
   renderOgImage
@@ -54,16 +56,16 @@ describe('postHtml', () => {
 
   it('sets the page title, escaped', () => {
     expect(html).toContain(
-      '<title>Tom &amp; Jerry\'s &quot;great&quot; &lt;escape&gt; — Kenechukwu Ajufo</title>'
+      "<title>Tom &amp; Jerry's &quot;great&quot; &lt;escape&gt; — Kenechukwu Ajufo</title>"
     );
   });
 
   it("points the social tags at the post's URL and image", () => {
     expect(meta('og:type')).toBe('article');
-    expect(meta('og:url')).toBe('https://kenechukwu.dev/writing/my-post');
-    expect(meta('og:image')).toBe('https://kenechukwu.dev/og/my-post.png');
+    expect(meta('og:url')).toBe('https://www.kenechukwu.dev/writing/my-post');
+    expect(meta('og:image')).toBe('https://www.kenechukwu.dev/og/my-post.png');
     expect(meta('twitter:image')).toBe(
-      'https://kenechukwu.dev/og/my-post.png'
+      'https://www.kenechukwu.dev/og/my-post.png'
     );
   });
 
@@ -108,11 +110,24 @@ describe('readPosts', () => {
   });
 });
 
+describe('postCard', () => {
+  it('shows the post title, author and readable date', () => {
+    expect(postCard(post)).toEqual({
+      eyebrow: 'kenechukwu.dev / writing',
+      title: post.title,
+      footer: ['Kenechukwu Ajufo', '15 January 2024']
+    });
+  });
+});
+
 describe('renderOgImage', () => {
-  it(
-    'draws a 1200×630 PNG',
-    async () => {
-      const png = await renderOgImage(post, await loadFonts());
+  it.each([
+    ['a post', postCard(post)],
+    ['the home page', HOME_CARD]
+  ])(
+    'draws a 1200×630 PNG for %s',
+    async (_, card) => {
+      const png = await renderOgImage(card, await loadFonts());
       // PNG signature, then the IHDR chunk holds width and height
       expect(png.subarray(1, 4).toString()).toBe('PNG');
       expect(png.readUInt32BE(16)).toBe(OG_WIDTH);
@@ -122,13 +137,23 @@ describe('renderOgImage', () => {
   );
 });
 
-// Guards the regexes in postHtml against the real template
 describe('index.html', () => {
+  const read = () =>
+    readFile(path.resolve(__dirname, '../../index.html'), 'utf8');
+
+  // Guards the regexes in postHtml against the real template
   it('has every tag postHtml replaces', async () => {
-    const html = await readFile(
-      path.resolve(__dirname, '../../index.html'),
-      'utf8'
-    );
+    const html = await read();
     expect(() => postHtml(html, post)).not.toThrow();
+  });
+
+  it('uses the generated home image for every other page', async () => {
+    const html = await read();
+    for (const key of ['og:image', 'twitter:image'])
+      expect(html).toMatch(
+        new RegExp(
+          `"${key}"\\s+content="https://www\\.kenechukwu\\.dev/og/home\\.png"`
+        )
+      );
   });
 });
