@@ -7,7 +7,8 @@ describe('Markdown pipeline', () => {
     expect(frontmatter).toEqual({
       title: 'Sample post',
       date: '2024-01-15',
-      description: 'A fixture for testing the Markdown pipeline.'
+      description: 'A fixture for testing the Markdown pipeline.',
+      readingMinutes: 1
     });
   });
 

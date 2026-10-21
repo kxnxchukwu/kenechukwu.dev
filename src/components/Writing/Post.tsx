@@ -14,6 +14,8 @@ function PostArticle({ post }: Readonly<{ post: PostData }>) {
     <article className="md:max-w-[520px] m-6 md:m-20 mt-[50px]">
       <p className="text-xs text-neutral-500 pb-1">
         <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <span aria-hidden="true"> · </span>
+        {post.readingMinutes} min read
       </p>
       <h1 className="text-neutral-700 font-semibold pb-6">{post.title}</h1>
       <div className="post">
