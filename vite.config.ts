@@ -15,14 +15,29 @@ interface HastNode {
   children?: HastNode[];
 }
 
-// Post headings sit under the page's own h1, so shift them down a level.
+const headingLevel = (node: HastNode) => {
+  const match = /^h([1-6])$/.exec(node.tagName ?? '');
+  return match ? Number(match[1]) : undefined;
+};
+
+// Post headings sit under the page's own h1, so the post's top heading level
+// (# or ##) becomes h2 and the rest keep their relative depth.
 // Images load lazily and code blocks get a tab stop so keyboard users can scroll them.
 function rehypePostElements() {
   return (tree: HastNode) => {
+    let topLevel = 6;
+    const findTop = (node: HastNode) => {
+      const level = headingLevel(node);
+      if (level) topLevel = Math.min(topLevel, level);
+      node.children?.forEach(findTop);
+    };
+    findTop(tree);
+    const shift = 2 - topLevel;
+
     const walk = (node: HastNode) => {
       if (node.type === 'element' && node.tagName) {
-        const heading = /^h([1-5])$/.exec(node.tagName);
-        if (heading) node.tagName = `h${Number(heading[1]) + 1}`;
+        const level = headingLevel(node);
+        if (level) node.tagName = `h${Math.min(level + shift, 6)}`;
         if (node.tagName === 'img') {
           node.properties = {
             ...node.properties,
