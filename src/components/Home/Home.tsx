@@ -3,6 +3,7 @@ import { IconSet } from '../IconSet';
 import { DownloadIcon } from '../Icons';
 import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import { hasPosts } from '../../content/writing/hasPosts';
 
 export default function Home() {
   useDocumentTitle('Kenechukwu Ajufo — Frontend Engineer');
@@ -60,6 +61,18 @@ export default function Home() {
           >
             projects
           </Link>
+          {hasPosts && (
+            <>
+              {', my '}
+              <Link
+                aria-label="my writing"
+                to="/writing"
+                className="text-green-800 underline hover:text-green-700"
+              >
+                writing
+              </Link>
+            </>
+          )}
           {', or a little more '}
           <Link
             aria-label="about me"

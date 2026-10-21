@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
+import { posts } from '../content/writing/posts';
+import { hasPosts } from '../content/writing/hasPosts';
 
 const renderWithRouter = (initialRoute: string) =>
   render(
@@ -35,6 +37,38 @@ describe('App routing', () => {
     renderWithRouter('/projects');
     expect(
       screen.getByRole('heading', { name: /^projects$/i })
+    ).toBeInTheDocument();
+  });
+
+  it.runIf(hasPosts)('renders the Writing page at /writing', async () => {
+    renderWithRouter('/writing');
+    expect(
+      await screen.findByRole('heading', { name: /^writing$/i })
+    ).toBeInTheDocument();
+  });
+
+  it.runIf(posts.length > 0)('renders a post at /writing/:slug', async () => {
+    const [post] = posts;
+    renderWithRouter(`/writing/${post.slug}`);
+    expect(
+      await screen.findByRole('heading', { level: 1, name: post.title })
+    ).toBeInTheDocument();
+  });
+
+  it.runIf(!hasPosts)(
+    'shows the 404 page at /writing until there are posts',
+    () => {
+      renderWithRouter('/writing');
+      expect(
+        screen.getByRole('heading', { name: /^404$/i })
+      ).toBeInTheDocument();
+    }
+  );
+
+  it('renders the NotFound page for unknown posts', async () => {
+    renderWithRouter('/writing/not-a-post');
+    expect(
+      await screen.findByRole('heading', { name: /^404$/i })
     ).toBeInTheDocument();
   });
 
