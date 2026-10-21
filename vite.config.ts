@@ -8,6 +8,7 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { remarkReadingTime } from './plugins/remarkReadingTime';
+import { ogImages } from './plugins/ogImages';
 
 interface HastNode {
   type: string;
@@ -85,7 +86,8 @@ export default defineConfig({
       })
     },
     react(),
-    tailwindcss()
+    tailwindcss(),
+    ogImages('src/content/writing')
   ],
   test: {
     environment: 'jsdom',
