@@ -3,6 +3,9 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import Home from '../Home';
 
+const writing = vi.hoisted(() => ({ hasPosts: false }));
+vi.mock('../../../content/writing/hasPosts', () => writing);
+
 const renderHome = () =>
   render(
     <MemoryRouter>
@@ -30,6 +33,24 @@ describe('Home', () => {
       'href',
       '/about'
     );
+  });
+
+  it('hides the writing link until there are posts', () => {
+    writing.hasPosts = false;
+    renderHome();
+    expect(
+      screen.queryByRole('link', { name: /my writing/i })
+    ).not.toBeInTheDocument();
+  });
+
+  it('links to writing once there are posts', () => {
+    writing.hasPosts = true;
+    renderHome();
+    expect(screen.getByRole('link', { name: /my writing/i })).toHaveAttribute(
+      'href',
+      '/writing'
+    );
+    writing.hasPosts = false;
   });
 
   it('renders an external link to eMatchi', () => {
