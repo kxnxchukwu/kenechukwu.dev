@@ -10,6 +10,13 @@ describe('posts', () => {
     }
   });
 
+  it('gives every post a whole-minute reading time', () => {
+    for (const post of posts) {
+      expect(Number.isInteger(post.readingMinutes)).toBe(true);
+      expect(post.readingMinutes).toBeGreaterThan(0);
+    }
+  });
+
   it('sorts posts newest first', () => {
     const dates = posts.map((post) => post.date);
     expect(dates).toEqual([...dates].sort().reverse());

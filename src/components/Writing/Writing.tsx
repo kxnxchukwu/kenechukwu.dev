@@ -7,10 +7,12 @@ export default function Writing() {
   return (
     <div className="md:max-w-[420px] m-6 md:m-20 mt-[50px]">
       <h1 className="text-neutral-700 font-semibold pb-6">writing</h1>
-      {posts.map(({ slug, title, date, description }) => (
+      {posts.map(({ slug, title, date, description, readingMinutes }) => (
         <article key={slug} className="mb-6">
           <p className="text-xs text-neutral-500 pb-1">
             <time dateTime={date}>{formatDate(date)}</time>
+            <span aria-hidden="true"> · </span>
+            {readingMinutes} min read
           </p>
           <h2 className="text-neutral-700 font-semibold">
             <Link

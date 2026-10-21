@@ -7,6 +7,7 @@ import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { remarkReadingTime } from './plugins/remarkReadingTime';
 
 interface HastNode {
   type: string;
@@ -61,7 +62,11 @@ export default defineConfig({
     {
       enforce: 'pre',
       ...mdx({
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [
+          remarkFrontmatter,
+          remarkReadingTime,
+          remarkMdxFrontmatter
+        ],
         rehypePlugins: [
           [
             rehypePrettyCode,

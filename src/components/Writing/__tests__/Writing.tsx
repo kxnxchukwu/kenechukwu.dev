@@ -13,6 +13,7 @@ vi.mock('../../../content/writing/posts', async (importOriginal) => {
       title: 'Newer post',
       date: '2024-03-02',
       description: 'The newer description',
+      readingMinutes: 5,
       Content: () => <p>Newer body</p>
     },
     {
@@ -20,6 +21,7 @@ vi.mock('../../../content/writing/posts', async (importOriginal) => {
       title: 'Older post',
       date: '2023-11-20',
       description: 'The older description',
+      readingMinutes: 12,
       Content: () => <p>Older body</p>
     }
   ];
@@ -62,6 +64,13 @@ describe('Writing', () => {
     );
   });
 
+  it('shows the reading time next to each date', () => {
+    renderAt('/writing');
+    const articles = screen.getAllByRole('article');
+    expect(within(articles[0]).getByText(/5 min read/)).toBeInTheDocument();
+    expect(within(articles[1]).getByText(/12 min read/)).toBeInTheDocument();
+  });
+
   it('sets the document title', () => {
     renderAt('/writing');
     expect(document.title).toBe('Writing — Kenechukwu Ajufo');
@@ -69,12 +78,13 @@ describe('Writing', () => {
 });
 
 describe('Post', () => {
-  it('renders the title, date and body', () => {
+  it('renders the title, date, reading time and body', () => {
     renderAt('/writing/older-post');
     expect(
       screen.getByRole('heading', { level: 1, name: 'Older post' })
     ).toBeInTheDocument();
     expect(screen.getByText('20 November 2023')).toBeInTheDocument();
+    expect(screen.getByText(/12 min read/)).toBeInTheDocument();
     expect(screen.getByText('Older body')).toBeInTheDocument();
     expect(document.title).toBe('Older post — Kenechukwu Ajufo');
   });

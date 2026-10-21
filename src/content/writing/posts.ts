@@ -4,6 +4,8 @@ interface Frontmatter {
   title: string;
   date: string;
   description: string;
+  // Added at build time by plugins/remarkReadingTime.ts
+  readingMinutes: number;
 }
 
 interface PostModule {
