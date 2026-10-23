@@ -58,7 +58,7 @@ describe('Home', () => {
     const ematchiLink = screen.getByRole('link', { name: /ematchi game/i });
     expect(ematchiLink).toHaveAttribute(
       'href',
-      'https://ematchi-game-six.vercel.app/'
+      'https://ematchi.kenechukwu.dev/'
     );
     expect(ematchiLink).toHaveAttribute('target', '_blank');
   });

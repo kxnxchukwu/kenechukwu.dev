@@ -53,7 +53,7 @@ const projects: Project[] = [
     description: 'A memory matching card game built with Svelte.',
     technologies: ['Svelte', 'TypeScript'],
     github: 'https://github.com/kxnxchukwu/ematchi',
-    live: 'https://ematchi-game-six.vercel.app/'
+    live: 'https://ematchi.kenechukwu.dev'
   }
 ];
 

@@ -84,7 +84,7 @@ export default function Home() {
           {". Or if you're bored, play "}
           <a
             aria-label="eMatchi Game"
-            href="https://ematchi-game-six.vercel.app/"
+            href="https://ematchi.kenechukwu.dev/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-900 underline hover:text-neutral-500"
