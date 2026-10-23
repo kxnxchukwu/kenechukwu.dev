@@ -82,7 +82,8 @@ export const HOME_CARD: OgCard = {
 export function postCard(post: OgPost): OgCard {
   return {
     eyebrow: 'kenechukwu.dev / writing',
-    title: post.title,
+    // No @fontsource/inter subset has →, so "v5 → v6" would draw a box
+    title: post.title.replaceAll('→', 'to'),
     footer: ['Kenechukwu Ajufo', dateFormat.format(new Date(post.date))]
   };
 }
