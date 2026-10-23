@@ -118,6 +118,12 @@ describe('postCard', () => {
       footer: ['Kenechukwu Ajufo', '15 January 2024']
     });
   });
+
+  it('writes arrows as "to", since Inter has no → glyph here', () => {
+    expect(postCard({ ...post, title: 'React Router v5 → v6' }).title).toBe(
+      'React Router v5 to v6'
+    );
+  });
 });
 
 describe('renderOgImage', () => {
