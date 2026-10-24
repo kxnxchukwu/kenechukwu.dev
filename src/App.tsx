@@ -36,6 +36,14 @@ function App() {
               }
             />
             <Route
+              path="/writing/tags/:tag"
+              element={
+                <Suspense fallback={null}>
+                  <Writing />
+                </Suspense>
+              }
+            />
+            <Route
               path="/writing/:slug"
               element={
                 <Suspense fallback={null}>
