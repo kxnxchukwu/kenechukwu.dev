@@ -22,7 +22,7 @@ export const experienceData: ExperienceData = [
     role: 'Frontend Engineer',
     company: 'bxp software',
     description:
-      "Maintain, flesh new features, and ship bxp's CRM cloud based system for a diverse array of clients.",
+      "Maintain, flesh out new features, and ship bxp's CRM cloud based system for a diverse array of clients.",
     technologies: ['JavaScript', 'HTML & CSS', 'React']
   },
   {
