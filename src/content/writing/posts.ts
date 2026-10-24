@@ -4,6 +4,7 @@ interface Frontmatter {
   title: string;
   date: string;
   description: string;
+  tags?: string[];
   // Added at build time by plugins/remarkReadingTime.ts
   readingMinutes: number;
 }

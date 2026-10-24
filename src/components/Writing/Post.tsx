@@ -5,7 +5,9 @@ import {
   getPost,
   type Post as PostData
 } from '../../content/writing/posts';
+import { ArrowBackIcon } from '../Icons';
 import { NotFound } from '../NotFound';
+import { Tags } from './Tags';
 
 function PostArticle({ post }: Readonly<{ post: PostData }>) {
   useDocumentTitle(`${post.title} — Kenechukwu Ajufo`);
@@ -21,12 +23,24 @@ function PostArticle({ post }: Readonly<{ post: PostData }>) {
       <div className="post">
         <Content />
       </div>
-      <Link
-        to="/writing"
-        className="text-neutral-900 border-b hover:text-neutral-500 text-sm"
-      >
-        all writing
-      </Link>
+      {/* Tags come after the post, so nothing clickable sits between the
+          title and the first line, and they're there when the reader is
+          looking for what to read next */}
+      <footer>
+        {!!post.tags?.length && (
+          <div className="pb-6">
+            <p className="text-xs text-neutral-500 pb-2">more on</p>
+            <Tags tags={post.tags} />
+          </div>
+        )}
+        {/* Matches the back link at the top of the page */}
+        <Link
+          to="/writing"
+          className="hover:text-green-700 inline-flex items-center gap-1"
+        >
+          <ArrowBackIcon size={20} /> back to writing
+        </Link>
+      </footer>
     </article>
   );
 }

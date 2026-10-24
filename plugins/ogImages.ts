@@ -25,6 +25,7 @@ export interface OgPost {
   title: string;
   date: string;
   description: string;
+  tags?: string[];
 }
 
 // What a preview image shows, top to bottom
@@ -44,8 +45,9 @@ export async function readPosts(dir: string): Promise<OgPost[]> {
     files.map(async (file) => {
       const source = await readFile(path.join(dir, file), 'utf8');
       const yaml = /^---\r?\n([\s\S]*?)\r?\n---/.exec(source)?.[1] ?? '';
-      const { title, date, description } = (parse(yaml) ?? {}) as OgPost;
-      return { slug: file.slice(0, -'.md'.length), title, date, description };
+      const { title, date, description, tags } = (parse(yaml) ?? {}) as OgPost;
+      const slug = file.slice(0, -'.md'.length);
+      return { slug, title, date, description, tags };
     })
   );
 }
@@ -178,12 +180,18 @@ export function postHtml(template: string, post: OgPost) {
     ['twitter:description', post.description],
     ['twitter:image', image]
   ];
+  // index.html has no article:tag tags to fill, so these are added
+  const articleTags = (post.tags ?? [])
+    .map(
+      (tag) =>
+        `<meta property="article:tag" content="${escapeHtml(tag)}" />\n  `
+    )
+    .join('');
   return tags.reduce(
     (html, [key, value]) => setMeta(html, key, value),
-    template.replace(
-      /<title>[^<]*<\/title>/,
-      `<title>${escapeHtml(title)}</title>`
-    )
+    template
+      .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
+      .replace('</head>', `${articleTags}</head>`)
   );
 }
 

@@ -55,6 +55,14 @@ describe('App routing', () => {
     ).toBeInTheDocument();
   });
 
+  const tag = posts.find((post) => post.tags?.length)?.tags?.[0];
+  it.runIf(tag)('renders the writing list filtered by tag', async () => {
+    renderWithRouter(`/writing/tags/${tag}`);
+    expect(
+      await screen.findByRole('heading', { name: `writing tagged ${tag}` })
+    ).toBeInTheDocument();
+  });
+
   it.runIf(!hasPosts)(
     'shows the 404 page at /writing until there are posts',
     () => {

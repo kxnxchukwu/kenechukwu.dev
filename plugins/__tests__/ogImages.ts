@@ -17,7 +17,8 @@ const post = {
   slug: 'my-post',
   title: 'Tom & Jerry\'s "great" <escape>',
   date: '2024-01-15',
-  description: 'A post about cats & mice.'
+  description: 'A post about cats & mice.',
+  tags: ['react', 'cats & mice']
 };
 
 const template = (key: string, value: string) =>
@@ -44,7 +45,8 @@ const indexHtml = [
       'property',
       key.startsWith('og:') ? 'property' : 'name'
     )
-  )
+  ),
+  '  </head>'
 ].join('\n');
 
 describe('postHtml', () => {
@@ -78,6 +80,20 @@ describe('postHtml', () => {
     expect(html).not.toContain('home value');
   });
 
+  it('adds an article:tag for each tag, escaped, inside head', () => {
+    expect(html).toContain(
+      '  <meta property="article:tag" content="react" />\n' +
+        '  <meta property="article:tag" content="cats &amp; mice" />\n' +
+        '  </head>'
+    );
+  });
+
+  it('leaves head alone when a post has no tags', () => {
+    const untagged = postHtml(indexHtml, { ...post, tags: undefined });
+    expect(untagged).not.toContain('article:tag');
+    expect(untagged).toMatch(/\n {2}<\/head>$/);
+  });
+
   it('fails the build if index.html loses a tag', () => {
     expect(() =>
       postHtml(indexHtml.replace('og:image', 'og:picture'), post)
@@ -102,10 +118,11 @@ describe('readPosts', () => {
     const posts = await readPosts(
       path.resolve(__dirname, '../../src/content/writing')
     );
-    for (const { title, date, description } of posts) {
+    for (const { title, date, description, tags } of posts) {
       expect(title).toBeTruthy();
       expect(date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(description).toBeTruthy();
+      if (tags !== undefined) expect(tags).toEqual(expect.any(Array));
     }
   });
 });
