@@ -30,12 +30,15 @@ Add a Markdown file to `src/content/writing/`. The file name becomes the URL (`m
 title: 'My post'
 date: '2026-10-21'
 description: 'One sentence shown on the writing list.'
+tags: [react, typescript] # optional; each links to /writing/tags/<tag>
 ---
 
 ## First section
 ```
 
 The writing link and pages only appear while there is at least one post. Code blocks are highlighted at build time, so no highlighter ships to the browser.
+
+Each build also generates a preview image per post for link previews, and an RSS feed at `/rss.xml` with every post's title, link, date, description and tags.
 
 ## Running locally
 
