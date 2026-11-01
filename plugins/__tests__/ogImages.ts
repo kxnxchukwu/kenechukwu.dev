@@ -141,6 +141,12 @@ describe('postCard', () => {
       'React Router v5 to v6'
     );
   });
+
+  it('lets long identifiers wrap after underscores', () => {
+    expect(postCard({ ...post, title: 'DO_NOT_USE' }).title).toBe(
+      'DO_​NOT_​USE'
+    );
+  });
 });
 
 describe('renderOgImage', () => {

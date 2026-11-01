@@ -7,6 +7,7 @@ import {
 } from '../../content/writing/posts';
 import { ArrowBackIcon } from '../Icons';
 import { NotFound } from '../NotFound';
+import { softBreaks } from './softBreaks';
 import { Tags } from './Tags';
 
 function PostArticle({ post }: Readonly<{ post: PostData }>) {
@@ -19,7 +20,9 @@ function PostArticle({ post }: Readonly<{ post: PostData }>) {
         <span aria-hidden="true"> · </span>
         {post.readingMinutes} min read
       </p>
-      <h1 className="text-neutral-700 font-semibold pb-6">{post.title}</h1>
+      <h1 className="text-neutral-700 font-semibold pb-6 break-words">
+        {softBreaks(post.title)}
+      </h1>
       <div className="post">
         <Content />
       </div>
