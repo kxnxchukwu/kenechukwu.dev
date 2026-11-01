@@ -84,8 +84,10 @@ export const HOME_CARD: OgCard = {
 export function postCard(post: OgPost): OgCard {
   return {
     eyebrow: 'kenechukwu.dev / writing',
-    // No @fontsource/inter subset has →, so "v5 → v6" would draw a box
-    title: post.title.replaceAll('→', 'to'),
+    // No @fontsource/inter subset has →, so "v5 → v6" would draw a box.
+    // A zero-width space after each _ lets long identifiers wrap there
+    // instead of mid-word.
+    title: post.title.replaceAll('→', 'to').replaceAll('_', '_​'),
     footer: ['Kenechukwu Ajufo', dateFormat.format(new Date(post.date))]
   };
 }
@@ -129,7 +131,10 @@ export async function renderOgImage(card: OgCard, fonts: Font[]) {
                   fontSize: card.title.length > 60 ? 60 : 72,
                   fontWeight: 600,
                   lineHeight: 1.15,
-                  color: '#404040'
+                  color: '#404040',
+                  // Breaks a word only when it can't fit on a line, like an
+                  // identifier such as appNavigate_DO_NOT_USE_…
+                  wordBreak: 'break-word'
                 },
                 card.title
               ),

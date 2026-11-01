@@ -6,6 +6,7 @@ import {
   type Post as PostData
 } from '../../content/writing/posts';
 import { NotFound } from '../NotFound';
+import { softBreaks } from './softBreaks';
 import { Tags } from './Tags';
 
 function PostList({
@@ -49,12 +50,12 @@ function PostList({
             <span aria-hidden="true"> · </span>
             {readingMinutes} min read
           </p>
-          <h2 className="text-neutral-700 font-semibold">
+          <h2 className="text-neutral-700 font-semibold break-words">
             <Link
               to={`/writing/${slug}`}
               className="text-neutral-700 hover:text-green-700"
             >
-              {title}
+              {softBreaks(title)}
             </Link>
           </h2>
           <p className="leading-[25px] pt-1 text-neutral-500 font-[380] text-sm w-11/12">
